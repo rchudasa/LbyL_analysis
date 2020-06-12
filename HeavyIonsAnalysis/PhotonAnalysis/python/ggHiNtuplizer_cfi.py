@@ -1,0 +1,43 @@
+import FWCore.ParameterSet.Config as cms
+
+from HeavyIonsAnalysis.PhotonAnalysis.ElectronVID_cff import *
+
+ggHiNtuplizer = cms.EDAnalyzer(
+    "ggHiNtuplizer",
+    doGenParticles     = cms.bool(True),
+    runOnParticleGun   = cms.bool(False),
+    useValMapIso       = cms.bool(True),
+    doElectronVID      = cms.bool(False),
+    pileupCollection   = cms.InputTag("addPileupInfo"),
+    genParticleSrc     = cms.InputTag("genParticles"),
+    #gsfElectronLabel   = cms.InputTag("gedGsfElectronsTmp"),
+    gsfElectronLabel   = cms.InputTag("gedGsfElectrons"),
+    elecoll            = cms.InputTag("gedGsfElectrons"),
+    eletrk             = cms.InputTag("electronGsfTracks"),
+    gentrk             = cms.InputTag("generalTracks"),
+    hybridsc           = cms.InputTag("correctedHybridSuperClusters"),
+    #hybridsc           = cms.InputTag("hybridSuperClusters"),
+    #hybridsc           = cms.InputTag("uncleanOnlyHybridSuperClusters"),
+    mult55sc           = cms.InputTag("correctedMulti5x5SuperClustersWithPreshower"),
+    recoHyPhotonSrc    = cms.InputTag("photons"),
+    recoPhotonSrc      = cms.InputTag("gedPhotons"),
+    electronVetoID     = electronVetoID25nsV1,
+    electronLooseID    = electronLooseID25nsV1,
+    electronMediumID   = electronMediumID25nsV1,
+    electronTightID    = electronTightID25nsV1,
+    recoPhotonHiIsolationMap = cms.InputTag("photonIsolationHIProducerppGED"),
+    recoHyPhotonHiIsolationMap = cms.InputTag("photonIsolationHIProducerpp"),
+    recoMuonSrc        = cms.InputTag("muons"),
+    recoCaloTower      = cms.InputTag("towerMaker"),
+    VtxLabel           = cms.InputTag("offlinePrimaryVertices"),
+    rho                = cms.InputTag("fixedGridRhoFastjetAll"),
+    beamSpot           = cms.InputTag('offlineBeamSpot'),
+    conversions        = cms.InputTag('allConversions'),
+    effAreasConfigFile = effAreasConfigFile25ns,
+    doPfIso            = cms.bool(True),
+    doVsIso            = cms.bool(False),
+    particleFlowCollection = cms.InputTag("particleFlow"),
+    #particleFlowCollection = cms.InputTag("particleFlowTmp"),
+    voronoiBackgroundCalo = cms.InputTag("voronoiBackgroundCalo"),
+    voronoiBackgroundPF = cms.InputTag("voronoiBackgroundPF")
+)

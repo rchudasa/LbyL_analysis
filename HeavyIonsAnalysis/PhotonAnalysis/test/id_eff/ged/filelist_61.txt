@@ -1,0 +1,1 @@
+root://eoscms//eos/cms/store/group/phys_diffraction/diphoton/aug_reco_data_check_for_lumi/hiforest2/03/hiforest_0.root
